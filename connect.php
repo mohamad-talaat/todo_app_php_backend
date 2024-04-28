@@ -1,6 +1,6 @@
 
 <?php 
-$dsn = "mysql:host=localhost;dbname=noteapp" ; 
+$dsn = "mysql:host=localhost;dbname=todoapp" ; 
 $user = "root" ;
 $pass = "" ; 
 $option = array(
@@ -10,14 +10,15 @@ try {
 
     $con = new PDO($dsn , $user , $pass , $option ); 
     $con->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION) ;
-    include "function.php" ; 
+    include_once "../function.php"; // Include the file once
+
 
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Access-Control-Allow-Origin");
        header("Access-Control-Allow-Methods: POST, OPTIONS , GET");
-    // to connect with backend by easy...
+    // to connect with backend by easy... without opening the phpmysql
     
-    checkAuthenticate();
+  //  checkAuthenticate();
 }
 catch(PDOException $e){
   echo $e->getMessage() ;        
